@@ -120,6 +120,89 @@
             color: #8e0000;
         }
 
+        /* PASSWORD MODAL OVERLAY */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.65);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 16px;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 14px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .modal-card h3 {
+            color: #c62828;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .modal-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 14px;
+        }
+
+        .modal-card input {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 4px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .modal-card input:focus {
+            border-color: #c62828;
+            outline: none;
+        }
+
+        .error-msg {
+            color: #d32f2f;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            min-height: 18px;
+        }
+
+        .modal-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-btns button {
+            flex: 1;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-confirm-pass {
+            background: #c62828;
+            color: white;
+        }
+
+        .btn-cancel-pass {
+            background: #e0e0e0;
+            color: #333;
+        }
+
         /* NAVIGATION FOR SELLER VIEW */
         .seller-nav {
             display: flex;
@@ -248,16 +331,6 @@
             border: 2px solid #ffa000;
             border-radius: 8px;
             background: white;
-        }
-
-        .bargain-input {
-            width: 110px;
-            padding: 10px;
-            font-size: 15px;
-            font-weight: bold;
-            border: 2px solid #ffa000;
-            border-radius: 8px;
-            text-align: center;
         }
 
         .weight-section-label {
@@ -441,6 +514,19 @@
             cursor: pointer;
         }
 
+        .btn-clear-history {
+            width: 100%;
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+
         /* REAL-TIME RECEIPT & LIVE FEED STYLING */
         .live-receipt-box {
             background: #fff8e1;
@@ -502,6 +588,195 @@
         .btn-deliver { background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
         .btn-deliver.active { background: #1565c0; color: white; }
 
+        /* NEW ORDER TOAST NOTIFICATION (SELLER VIEW) */
+        .new-order-toast {
+            position: fixed;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-140%);
+            background: #1b5e20;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 9998;
+            max-width: 92%;
+            text-align: center;
+            opacity: 0;
+            transition: transform 0.45s cubic-bezier(.34,1.56,.64,1), opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .new-order-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* LIVE ORDER SKELETON LOADING CARD */
+        .skeleton-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 22px 12px;
+            animation: skeletonPulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes skeletonPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .skeleton-line {
+            height: 12px;
+            border-radius: 6px;
+            width: 55%;
+            background: linear-gradient(90deg, #ffe0b2 25%, #ffcc80 37%, #ffe0b2 63%);
+            background-size: 400% 100%;
+            animation: skeletonShimmer 1.4s ease infinite;
+        }
+
+        .skeleton-line-sub {
+            width: 38%;
+        }
+
+        @keyframes skeletonShimmer {
+            0% { background-position: 100% 50%; }
+            100% { background-position: 0 50%; }
+        }
+
+        .skeleton-loading-text {
+            font-size: 13px;
+            color: #e65100;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .skeleton-spinner {
+            width: 26px;
+            height: 26px;
+            border: 3px solid #ffe0b2;
+            border-top-color: #e65100;
+            border-radius: 50%;
+            animation: skeletonSpin 0.8s linear infinite;
+        }
+
+        @keyframes skeletonSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* NEW ORDER CARD REVEAL ANIMATION */
+        @keyframes orderCardPopIn {
+            0% { opacity: 0; transform: scale(0.92) translateY(8px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .order-card-reveal {
+            animation: orderCardPopIn 0.45s ease forwards;
+        }
+
+        /* SELLER CHECKLIST (PAYMENT / DELIVERED / DONE) */
+        .checklist-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            background: #fafafa;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-item:active {
+            transform: scale(0.98);
+        }
+
+        .checklist-item.checked {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+
+        .checklist-tick {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            border-radius: 6px;
+            border: 2px solid #bbb;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-item.checked .checklist-tick {
+            background: #2e7d32;
+            border-color: #2e7d32;
+        }
+
+        .checklist-emoji {
+            font-size: 18px;
+        }
+
+        .checklist-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            flex: 1;
+        }
+
+        .checklist-item.checklist-done {
+            background: #fff3e0;
+            border-color: #ffa000;
+        }
+
+        .checklist-item.checklist-done .checklist-text {
+            color: #e65100;
+        }
+
+        /* SALES LOG CHECKLIST SUMMARY */
+        .log-checklist-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .log-check-badge {
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .log-check-yes {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .log-check-no {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+
         /* DAILY SALES SUMMARY */
         .daily-summary-box {
             background: #1565c0;
@@ -542,6 +817,14 @@
             font-size: 16px;
             color: #1b5e20;
         }
+
+        .verified-badge {
+            font-size: 13px;
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 6px;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -559,6 +842,20 @@
         <p class="loading-subtitle">Song Thyda Pork Market</p>
         <div class="progress-container">
             <div class="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- SELLER PASSWORD AUTHENTICATION MODAL -->
+    <div id="passwordModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <h3>🔒 ផ្ទៀងផ្ទាត់ពាក្យសម្ងាត់អ្នកលក់</h3>
+            <p>សូមបញ្ចូលពាក្យសម្ងាត់ដើម្បីចូលទៅកាន់ Seller View</p>
+            <input type="password" id="sellerPassInput" placeholder="••••" maxlength="10">
+            <div id="passErrMsg" class="error-msg"></div>
+            <div class="modal-btns">
+                <button id="passSubmitBtn" class="btn-confirm-pass" onclick="submitSellerPassword()">ចូលប្រើប្រាស់</button>
+                <button class="btn-cancel-pass" onclick="closePasswordModal()">បោះបង់</button>
+            </div>
         </div>
     </div>
 
@@ -649,6 +946,7 @@
 
         <div class="step-box">
             <div class="step-title">២. ជ្រើសរើសទម្ងន់ (Step 2: Choose Weight)</div>
+            <div class="weight-section-label">ទម្ងន់ជា ខាំ (Pre-weight Khams):</div>
             <div class="grid-weights-kham">
                 <button class="btn-weight" onclick="addWithWeightInKg(0.1, '1 ខាំ', 'cust')">1 ខាំ</button>
                 <button class="btn-weight" onclick="addWithWeightInKg(0.2, '2 ខាំ', 'cust')">2 ខាំ</button>
@@ -657,6 +955,7 @@
                 <button class="btn-weight" onclick="addWithWeightInKg(0.5, '5 ខាំ', 'cust')">5 ខាំ</button>
                 <button class="btn-weight" onclick="addWithWeightInKg(0.8, '8 ខាំ', 'cust')">8 ខាំ</button>
             </div>
+            <div class="weight-section-label">ទម្ងន់ជា គីឡូ (Pre-weight Kg):</div>
             <div class="grid-weights-kg">
                 <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(1, '1kg', 'cust')">1 kg</button>
                 <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(2, '2kg', 'cust')">2 kg</button>
@@ -664,7 +963,7 @@
                 <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(5, '5kg', 'cust')">5 kg</button>
             </div>
             <div class="custom-weight-group">
-                <input type="number" id="customWeightCust" step="any" placeholder="ឧ. 1.5">
+                <input type="number" id="customWeightCust" step="any" max="30" placeholder="ឧ. 1.5">
                 <select id="weightUnitCust">
                     <option value="kham">ខាំ (Kham)</option>
                     <option value="kg" selected>គីឡូ (kg)</option>
@@ -698,6 +997,9 @@
 
     <!-- SELLER DASHBOARD (MOM'S VIEW) -->
     <div id="sellerView" class="view-section">
+        <!-- NEW ORDER TOAST NOTIFICATION -->
+        <div id="newOrderToast" class="new-order-toast"></div>
+
         <div class="seller-nav">
             <button id="navLiveOrdersBtn" class="seller-nav-btn active" onclick="switchSellerTab('liveOrdersTab')">📡 ការកុម្ម៉ង់ផ្ទាល់ (Live Feed)</button>
             <button id="navCalcBtn" class="seller-nav-btn" onclick="switchSellerTab('calculatorTab')">🧮 គណនាទូទៅ (POS)</button>
@@ -717,7 +1019,7 @@
         <!-- TAB 2: WALK-IN POS CALCULATOR -->
         <div id="calculatorTab" class="seller-tab-content" style="display: none;">
             <div class="step-box">
-                <div class="step-title">១. ជ្រើសរើសប្រភេទសាច់ (Step 1: Choose Meat)</div>
+                <div class="step-title">១. ជ្រើសរើសប្រភេទសាច់ (Step 1: Choose Meat - 8 Categories)</div>
                 <div class="grid-meat-cuts">
                     <div class="btn-meat" onclick="selectMeat('ថយឡាំង', 23000, this, 'calc')">
                         <span class="meat-name">ថយឡាំង</span>
@@ -735,16 +1037,69 @@
                         <span class="meat-name">ឆ្អឹងជំនី</span>
                         <span class="price-tag">24,000 ៛/kg</span>
                     </div>
+                    <div class="btn-meat" onclick="selectMeat('សាច់សុទ្ធ', 22000, this, 'calc')">
+                        <span class="meat-name">សាច់សុទ្ធ</span>
+                        <span class="price-tag">22,000 ៛/kg</span>
+                    </div>
+                    <div class="btn-meat" onclick="selectMeat('សាច់គ្រក', 30000, this, 'calc')">
+                        <span class="meat-name">សាច់គ្រក</span>
+                        <span class="price-tag">30,000 ៛/kg</span>
+                    </div>
+                    <div class="btn-meat" onclick="selectMeat('ជើងជ្រូក', 22000, this, 'calc')">
+                        <span class="meat-name">ជើងជ្រូក</span>
+                        <span class="price-tag">22,000 ៛/kg</span>
+                    </div>
+                    <div class="btn-meat" onclick="selectMeat('គ្រឿងក្នុង', 24000, this, 'calc')">
+                        <span class="meat-name">គ្រឿងក្នុង</span>
+                        <span class="price-tag">24,000 ៛/kg</span>
+                    </div>
+                </div>
+
+                <div class="bargain-box">
+                    <span class="bargain-label">🏷️ កែប្រែ/សម្រួលតម្លៃព្រមព្រៀង (Bargained Price per kg):</span>
+                    <div class="bargain-controls">
+                        <select id="bargainSelectCalc" class="bargain-select" onchange="handleBargainSelectChange('calc')">
+                            <option value="default">តម្លៃដើម (Default Price)</option>
+                            <option value="29000">29,000 ៛</option>
+                            <option value="28000">28,000 ៛</option>
+                            <option value="27000">27,000 ៛</option>
+                            <option value="26000">26,000 ៛</option>
+                            <option value="25000">25,000 ៛</option>
+                            <option value="24000">24,000 ៛</option>
+                            <option value="23000">23,000 ៛</option>
+                            <option value="22000">22,000 ៛</option>
+                            <option value="21000">21,000 ៛</option>
+                            <option value="20000">20,000 ៛</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <div class="step-box">
                 <div class="step-title">២. ជ្រើសរើសទម្ងន់ (Step 2: Choose Weight)</div>
+                <div class="weight-section-label">ទម្ងន់ជា ខាំ (Six Pre-weight Khams):</div>
+                <div class="grid-weights-kham">
+                    <button class="btn-weight" onclick="addWithWeightInKg(0.1, '1 ខាំ', 'calc')">1 ខាំ</button>
+                    <button class="btn-weight" onclick="addWithWeightInKg(0.2, '2 ខាំ', 'calc')">2 ខាំ</button>
+                    <button class="btn-weight" onclick="addWithWeightInKg(0.3, '3 ខាំ', 'calc')">3 ខាំ</button>
+                    <button class="btn-weight" onclick="addWithWeightInKg(0.4, '4 ខាំ', 'calc')">4 ខាំ</button>
+                    <button class="btn-weight" onclick="addWithWeightInKg(0.5, '5 ខាំ', 'calc')">5 ខាំ</button>
+                    <button class="btn-weight" onclick="addWithWeightInKg(0.8, '8 ខាំ', 'calc')">8 ខាំ</button>
+                </div>
+                <div class="weight-section-label">ទម្ងន់ជា គីឡូ (Pre-weight Kg):</div>
                 <div class="grid-weights-kg">
                     <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(1, '1kg', 'calc')">1 kg</button>
                     <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(2, '2kg', 'calc')">2 kg</button>
                     <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(3, '3kg', 'calc')">3 kg</button>
                     <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(5, '5kg', 'calc')">5 kg</button>
+                </div>
+                <div class="custom-weight-group">
+                    <input type="number" id="customWeightCalc" step="any" max="30" placeholder="ទម្ងន់ (អតិបរមា 30kg)">
+                    <select id="weightUnitCalc">
+                        <option value="kham">ខាំ (Kham)</option>
+                        <option value="kg" selected>គីឡូ (kg)</option>
+                    </select>
+                    <button class="btn-add" onclick="addCustomWeight('calc')">+ បញ្ចូល</button>
                 </div>
             </div>
 
@@ -771,6 +1126,7 @@
                 <div>📅 ប្រាក់លក់សរុបថ្ងៃនេះ (TODAY REVENUE)</div>
                 <div class="daily-total-val" id="dailyTotalDisplay">0 ៛</div>
             </div>
+            <button class="btn-clear-history" onclick="clearAllSalesLogs()">🗑️ លុបប្រវត្តិលក់ទាំងស្រុង (Clear Log History)</button>
             <div class="step-box">
                 <div class="step-title">📜 ប្រវត្តិលក់ដែលបានរក្សាទុក (Sales Logs)</div>
                 <div id="logsContainer">
@@ -785,7 +1141,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push, set, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // FIREBASE CONFIGURATION[cite: 1]
+        // FIREBASE CONFIGURATION
         const firebaseConfig = {
             apiKey: "AIzaSyDc4oCclc0Ul_9jn-2XYRIwaL5Q6yBj5Cs",
             authDomain: "pork-shop-orders.firebaseapp.com",
@@ -816,6 +1172,10 @@
             calc: { selectedMeatName: "", baseMeatPrice: 0, activeMeatPrice: 0, orderList: [] }
         };
 
+        // PASSWORD LOGIC VARS
+        let wrongPassAttempts = 0;
+        let isPassLockedOut = false;
+
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.getElementById('loadingScreen').classList.add('hidden');
@@ -826,9 +1186,34 @@
             renderLogs();
         });
 
-        // VIEW & MODE SWITCHING
+        // CAMBODIA TIME HELPER
+        function getCambodiaFormattedTime() {
+            const now = new Date();
+            const options = { 
+                timeZone: 'Asia/Phnom_Penh', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true 
+            };
+            return now.toLocaleString('km-KH', options);
+        }
+
+        // VIEW & MODE SWITCHING WITH PASSWORD PROTECTION
         window.switchMode = function(mode) {
             playSFX(audioTap);
+
+            if (mode === 'seller') {
+                const isSellerAuth = localStorage.getItem('seller_auth_device') === 'true';
+                if (!isSellerAuth) {
+                    openPasswordModal();
+                    return;
+                }
+            }
+
             document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
             document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
 
@@ -842,6 +1227,70 @@
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
+
+        function openPasswordModal() {
+            document.getElementById('passwordModal').style.display = 'flex';
+            document.getElementById('sellerPassInput').value = '';
+            document.getElementById('passErrMsg').innerText = '';
+            document.getElementById('sellerPassInput').focus();
+        }
+
+        window.closePasswordModal = function() {
+            document.getElementById('passwordModal').style.display = 'none';
+        };
+
+        window.submitSellerPassword = function() {
+            if (isPassLockedOut) return;
+
+            const input = document.getElementById('sellerPassInput');
+            const errDiv = document.getElementById('passErrMsg');
+            const val = input.value.trim();
+
+            if (val === '6602') {
+                localStorage.setItem('seller_auth_device', 'true');
+                wrongPassAttempts = 0;
+                window.closePasswordModal();
+                window.switchMode('seller');
+            } else {
+                wrongPassAttempts++;
+                input.value = '';
+
+                if (wrongPassAttempts === 1) {
+                    errDiv.innerText = '❌ ពាក្យសម្ងាត់មិនត្រឹមត្រូវ! សូមព្យាយាមម្តងទៀត (Incorrect password! Try again)';
+                } else if (wrongPassAttempts === 2) {
+                    startLockoutTimer(15);
+                } else {
+                    errDiv.innerText = '❌ ពាក្យសម្ងាត់មិនត្រឹមត្រូវ! សូមបញ្ចូលពាក្យសម្ងាត់ដែលត្រឹមត្រូវ (Incorrect password! Please type correct password)';
+                }
+            }
+        };
+
+        function startLockoutTimer(seconds) {
+            isPassLockedOut = true;
+            const input = document.getElementById('sellerPassInput');
+            const btn = document.getElementById('passSubmitBtn');
+            const errDiv = document.getElementById('passErrMsg');
+
+            input.disabled = true;
+            btn.disabled = true;
+
+            let remaining = seconds;
+            errDiv.innerText = `⏳ ពាក្យសម្ងាត់ខុស 2 ដង! ផ្អាកបណ្តោះអាសន្ន ${remaining} វិនាទី (Disabled for ${remaining}s)`;
+
+            const interval = setInterval(() => {
+                remaining--;
+                if (remaining > 0) {
+                    errDiv.innerText = `⏳ ពាក្យសម្ងាត់ខុស 2 ដង! ផ្អាកបណ្តោះអាសន្ន ${remaining} វិនាទី (Disabled for ${remaining}s)`;
+                } else {
+                    clearInterval(interval);
+                    isPassLockedOut = false;
+                    input.disabled = false;
+                    btn.disabled = false;
+                    errDiv.innerText = 'សូមបញ្ចូលពាក្យសម្ងាត់ម្តងទៀត (Please type correct password)';
+                    input.focus();
+                }
+            }, 1000);
+        }
 
         window.switchSellerTab = function(tabId) {
             playSFX(audioTap);
@@ -881,7 +1330,15 @@
         };
 
         window.addWithWeightInKg = function(weightInKg, labelDisplay, mode = 'cust') {
-            if (!state[mode].selectedMeatName) return;
+            if (!state[mode].selectedMeatName) {
+                alert("សូមជ្រើសរើសប្រភេទសាច់ជាមុនសិន! (Please select meat cut first)");
+                return;
+            }
+            if (weightInKg > 30) {
+                alert("ទម្ងន់អតិបរមាគឺ 30kg! (Maximum weight allowed is 30kg)");
+                return;
+            }
+
             const itemTotal = Math.round(state[mode].activeMeatPrice * weightInKg);
             state[mode].orderList.push({
                 name: state[mode].selectedMeatName,
@@ -900,10 +1357,20 @@
             const unit = document.getElementById('weightUnit' + suffix).value;
             let rawValue = parseFloat(input.value);
 
-            if (!state[mode].selectedMeatName || isNaN(rawValue) || rawValue <= 0) return;
+            if (!state[mode].selectedMeatName) {
+                alert("សូមជ្រើសរើសប្រភេទសាច់ជាមុនសិន! (Please select meat cut first)");
+                return;
+            }
+
+            if (isNaN(rawValue) || rawValue <= 0) return;
 
             let weightInKg = unit === 'kham' ? rawValue * 0.1 : rawValue;
             let labelDisplay = unit === 'kham' ? rawValue + " ខាំ" : rawValue + "kg";
+
+            if (weightInKg > 30) {
+                alert("ទម្ងន់អតិបរមាគឺ 30kg! (Maximum weight allowed is 30kg)");
+                return;
+            }
 
             window.addWithWeightInKg(weightInKg, labelDisplay, mode);
             input.value = "";
@@ -979,7 +1446,7 @@
                 grandTotal: grandTotal,
                 isPaid: false,
                 isDelivered: false,
-                timestamp: new Date().toLocaleTimeString('km-KH')
+                timestamp: getCambodiaFormattedTime()
             };
 
             set(orderRef, orderData).then(() => {
@@ -1027,51 +1494,133 @@
             });
         }
 
-        // FIREBASE LIVE ORDERS FEED (SELLER)
-        function listenToLiveOrders() {
-            const feed = document.getElementById('firebaseOrdersFeed');
+        // FIREBASE LIVE ORDERS FEED (SELLER) — WITH MINI-LOADING REVEAL, TOAST & SFX
+        let knownOrderIds = new Set();
+        let pendingRevealIds = new Set();
+        let justRevealedIds = new Set();
+        let isInitialOrdersLoad = true;
+        let latestOrdersSnapshot = {};
 
+        function listenToLiveOrders() {
             onValue(ref(db, 'orders'), (snapshot) => {
-                const data = snapshot.val();
-                if (!data) {
-                    feed.innerHTML = '<p style="color: #888; text-align: center; padding: 15px;">មិនទាន់មានការកុម្ម៉ង់នៅឡើយទេ (No active orders)</p>';
-                    return;
+                const data = snapshot.val() || {};
+                latestOrdersSnapshot = data;
+                const currentIds = Object.keys(data);
+
+                if (isInitialOrdersLoad) {
+                    // First load: show whatever already exists without the "new order" fanfare
+                    currentIds.forEach(id => knownOrderIds.add(id));
+                    isInitialOrdersLoad = false;
+                } else {
+                    const newIds = currentIds.filter(id => !knownOrderIds.has(id));
+                    newIds.forEach(id => {
+                        knownOrderIds.add(id);
+                        pendingRevealIds.add(id);
+
+                        playSFX(audioSuccess);
+                        showNewOrderToast(data[id]);
+
+                        setTimeout(() => {
+                            pendingRevealIds.delete(id);
+                            justRevealedIds.add(id);
+                            renderOrdersFeed();
+                            setTimeout(() => justRevealedIds.delete(id), 600);
+                        }, 3000);
+                    });
                 }
 
-                let html = "";
-                Object.keys(data).forEach((key) => {
-                    const o = data[key];
-                    let itemsHtml = o.items.map(i => `<div class="log-item-row"><span>${i.name} (${i.labelDisplay})</span><span>${i.itemTotal.toLocaleString()} ៛</span></div>`).join('');
-
-                    html += `
-                        <div class="order-card">
-                            <div class="order-header">
-                                <strong>👤 ${o.customerName} (${o.customerPhone})</strong>
-                                <small>🕒 ${o.timestamp}</small>
-                            </div>
-                            <p style="font-size: 13px; color: #666; margin-bottom: 6px;">⏰ <strong>ម៉ោងយក:</strong> ${o.pickupTime}</p>
-                            ${itemsHtml}
-                            <div class="log-total-row">
-                                <span>សរុប</span>
-                                <span>${o.grandTotal.toLocaleString()} ៛</span>
-                            </div>
-                            <div class="toggle-actions">
-                                <button class="btn-check-action btn-pay ${o.isPaid ? 'active' : ''}" onclick="toggleOrderStatus('${key}', 'isPaid', ${!o.isPaid})">
-                                    ${o.isPaid ? '✓ បានបង់ប្រាក់' : 'បង់ប្រាក់'}
-                                </button>
-                                <button class="btn-check-action btn-deliver ${o.isDelivered ? 'active' : ''}" onclick="toggleOrderStatus('${key}', 'isDelivered', ${!o.isDelivered})">
-                                    ${o.isDelivered ? '✓ បានដឹកជូន' : 'ដឹកជូន'}
-                                </button>
-                                <button class="btn-check-action" style="background: #2e7d32; color: white;" onclick="completeAndArchiveOrder('${key}')">
-                                    ✅ បញ្ចប់
-                                </button>
-                            </div>
-                        </div>
-                    `;
+                // Clean up ids that were removed/archived so they can be treated as "new" again if re-added
+                Array.from(knownOrderIds).forEach(id => {
+                    if (!(id in data)) {
+                        knownOrderIds.delete(id);
+                        pendingRevealIds.delete(id);
+                        justRevealedIds.delete(id);
+                    }
                 });
 
-                feed.innerHTML = html;
+                renderOrdersFeed();
             });
+        }
+
+        function renderOrdersFeed() {
+            const feed = document.getElementById('firebaseOrdersFeed');
+            const data = latestOrdersSnapshot;
+
+            if (!data || Object.keys(data).length === 0) {
+                feed.innerHTML = '<p style="color: #888; text-align: center; padding: 15px;">មិនទាន់មានការកុម្ម៉ង់នៅឡើយទេ (No active orders)</p>';
+                return;
+            }
+
+            let html = "";
+            Object.keys(data).forEach((key) => {
+                if (pendingRevealIds.has(key)) {
+                    html += buildSkeletonOrderCard();
+                } else {
+                    html += buildOrderCard(key, data[key]);
+                }
+            });
+
+            feed.innerHTML = html;
+        }
+
+        function buildSkeletonOrderCard() {
+            return `
+                <div class="order-card skeleton-card">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line skeleton-line-sub"></div>
+                    <div class="skeleton-spinner"></div>
+                    <div class="skeleton-loading-text">🐷 កំពុងទាញយកការកុម្ម៉ង់ថ្មី... (Loading new order...)</div>
+                </div>
+            `;
+        }
+
+        function buildOrderCard(key, o) {
+            let itemsHtml = o.items.map(i => `<div class="log-item-row"><span>${i.name} (${i.labelDisplay})</span><span>${i.itemTotal.toLocaleString()} ៛</span></div>`).join('');
+
+            return `
+                <div class="order-card ${justRevealedIds.has(key) ? 'order-card-reveal' : ''}">
+                    <div class="order-header">
+                        <strong>👤 ${o.customerName} (${o.customerPhone})</strong>
+                        <small>🕒 ${o.timestamp}</small>
+                    </div>
+                    <p style="font-size: 13px; color: #666; margin-bottom: 6px;">⏰ <strong>ម៉ោងយក:</strong> ${o.pickupTime}</p>
+                    ${itemsHtml}
+                    <div class="log-total-row">
+                        <span>សរុប</span>
+                        <span>${o.grandTotal.toLocaleString()} ៛</span>
+                    </div>
+                    <div class="checklist-box">
+                        <div class="checklist-item ${o.isPaid ? 'checked' : ''}" onclick="toggleOrderStatus('${key}', 'isPaid', ${!o.isPaid})">
+                            <span class="checklist-tick">${o.isPaid ? '✔' : ''}</span>
+                            <span class="checklist-emoji">💰</span>
+                            <span class="checklist-text">បានទូទាត់ប្រាក់ (Payment Made)</span>
+                        </div>
+                        <div class="checklist-item ${o.isDelivered ? 'checked' : ''}" onclick="toggleOrderStatus('${key}', 'isDelivered', ${!o.isDelivered})">
+                            <span class="checklist-tick">${o.isDelivered ? '✔' : ''}</span>
+                            <span class="checklist-emoji">🛵</span>
+                            <span class="checklist-text">បានប្រគល់ទំនិញ (Delivered)</span>
+                        </div>
+                        <div class="checklist-item checklist-done" onclick="completeAndArchiveOrder('${key}')">
+                            <span class="checklist-tick"></span>
+                            <span class="checklist-emoji">✅</span>
+                            <span class="checklist-text">បញ្ចប់ការកុម្ម៉ង់ (Done)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showNewOrderToast(order) {
+            const toast = document.getElementById('newOrderToast');
+            if (!toast || !order) return;
+
+            toast.innerHTML = `🔔 <strong>${order.customerName}</strong> បានកុម្ម៉ង់ថ្មី! (New order) — <strong>${order.grandTotal.toLocaleString()} ៛</strong>`;
+            toast.classList.add('show');
+
+            clearTimeout(window._newOrderToastTimeout);
+            window._newOrderToastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
         }
 
         window.toggleOrderStatus = function(orderId, field, newValue) {
@@ -1089,7 +1638,12 @@
                         id: Date.now(),
                         timestamp: o.timestamp + ` (${o.customerName})`,
                         grandTotal: o.grandTotal,
-                        items: o.items
+                        items: o.items,
+                        checklist: {
+                            isPaid: !!o.isPaid,
+                            isDelivered: !!o.isDelivered,
+                            isDone: true
+                        }
                     });
                     localStorage.setItem('pork_sales_logs', JSON.stringify(logs));
                     remove(ref(db, 'orders/' + orderId));
@@ -1106,14 +1660,27 @@
             let logs = JSON.parse(localStorage.getItem('pork_sales_logs') || '[]');
             logs.unshift({
                 id: Date.now(),
-                timestamp: new Date().toLocaleTimeString('km-KH') + " (Walk-in)",
+                timestamp: getCambodiaFormattedTime() + " (Walk-in)",
                 grandTotal: grandTotal,
-                items: state.calc.orderList
+                items: state.calc.orderList,
+                checklist: {
+                    isPaid: true,
+                    isDelivered: true,
+                    isDone: true
+                }
             });
             localStorage.setItem('pork_sales_logs', JSON.stringify(logs));
 
             window.resetOrder('calc');
             window.switchSellerTab('logsTab');
+        };
+
+        window.clearAllSalesLogs = function() {
+            if (confirm("តើអ្នកពិតជាចង់លុបប្រវត្តិលក់ទាំងអស់មែនទេ? (Are you sure you want to clear all log history?)")) {
+                playSFX(audioDelete);
+                localStorage.removeItem('pork_sales_logs');
+                renderLogs();
+            }
         };
 
         function renderLogs() {
@@ -1132,6 +1699,15 @@
                 dailyTotal += log.grandTotal;
                 let itemsHtml = log.items.map(i => `<div class="log-item-row"><span>${i.name} (${i.labelDisplay})</span><span>${i.itemTotal.toLocaleString()} ៛</span></div>`).join('');
 
+                const cl = log.checklist || { isPaid: false, isDelivered: false, isDone: false };
+                let checklistHtml = `
+                    <div class="log-checklist-row">
+                        <span class="log-check-badge ${cl.isPaid ? 'log-check-yes' : 'log-check-no'}">${cl.isPaid ? '✅' : '❌'} បានទូទាត់ប្រាក់</span>
+                        <span class="log-check-badge ${cl.isDelivered ? 'log-check-yes' : 'log-check-no'}">${cl.isDelivered ? '✅' : '❌'} បានប្រគល់ទំនិញ</span>
+                        <span class="log-check-badge ${cl.isDone ? 'log-check-yes' : 'log-check-no'}">${cl.isDone ? '✅' : '❌'} បញ្ចប់ការកុម្ម៉ង់</span>
+                    </div>
+                `;
+
                 html += `
                     <div class="log-card">
                         <div style="font-size: 13px; color: #555; margin-bottom: 4px;">🕒 ${log.timestamp}</div>
@@ -1140,6 +1716,8 @@
                             <span>សរុប</span>
                             <span>${log.grandTotal.toLocaleString()} ៛</span>
                         </div>
+                        ${checklistHtml}
+                        <span class="verified-badge">VERIFIED BY CALCULATOR AND ADMIN ✔️</span>
                     </div>
                 `;
             });
