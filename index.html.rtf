@@ -1,0 +1,1159 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2708
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="km">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Song Thyda Sell Pork - \uc0\u6016 \u6040 \u6098 \u6040 \u6044 \u6071 \u6034 \u6072 \u6043 \u6016 \u6091 \u6047 \u6070 \u6021 \u6091 \u6023 \u6098 \u6042 \u6076 \u6016 </title>\
+    <style>\
+        * \{\
+            box-sizing: border-box;\
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\
+            margin: 0;\
+            padding: 0;\
+        \}\
+\
+        body \{\
+            background-color: #fce4ec;\
+            color: #333;\
+            padding: 12px;\
+            max-width: 680px;\
+            margin: 0 auto;\
+        \}\
+\
+        /* 2-SECOND LOADING SCREEN */\
+        .loading-screen \{\
+            position: fixed;\
+            top: 0; left: 0; width: 100vw; height: 100vh;\
+            background: #c62828;\
+            color: white;\
+            display: flex;\
+            flex-direction: column;\
+            justify-content: center;\
+            align-items: center;\
+            z-index: 9999;\
+            transition: opacity 0.4s ease, visibility 0.4s ease;\
+        \}\
+\
+        .loading-screen.hidden \{\
+            opacity: 0;\
+            visibility: hidden;\
+        \}\
+\
+        .pig-logo \{\
+            width: 90px;\
+            height: 90px;\
+            margin-bottom: 15px;\
+        \}\
+\
+        .loading-title \{\
+            font-size: 26px;\
+            font-weight: bold;\
+            margin-bottom: 4px;\
+            text-align: center;\
+        \}\
+\
+        .loading-subtitle \{\
+            font-size: 14px;\
+            color: #ffcdd2;\
+            margin-bottom: 25px;\
+        \}\
+\
+        .progress-container \{\
+            width: 200px;\
+            height: 8px;\
+            background: rgba(255, 255, 255, 0.25);\
+            border-radius: 10px;\
+            overflow: hidden;\
+        \}\
+\
+        .progress-bar \{\
+            width: 0%;\
+            height: 100%;\
+            background: #ffeb3b;\
+            border-radius: 10px;\
+            animation: fillProgress 2s linear forwards;\
+        \}\
+\
+        @keyframes fillProgress \{\
+            0% \{ width: 0%; \}\
+            100% \{ width: 100%; \}\
+        \}\
+\
+        /* HEADER & MODE SWITCHER */\
+        .header \{\
+            text-align: center;\
+            background: #c62828;\
+            color: white;\
+            padding: 12px;\
+            border-radius: 12px 12px 0 0;\
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);\
+        \}\
+\
+        .header h1 \{\
+            font-size: 20px;\
+        \}\
+\
+        .mode-bar \{\
+            display: flex;\
+            background: #8e0000;\
+            padding: 4px;\
+            border-radius: 0 0 12px 12px;\
+            margin-bottom: 12px;\
+            gap: 4px;\
+        \}\
+\
+        .mode-btn \{\
+            flex: 1;\
+            padding: 10px;\
+            border: none;\
+            background: #b71c1c;\
+            color: #ffcdd2;\
+            font-size: 14px;\
+            font-weight: bold;\
+            border-radius: 8px;\
+            cursor: pointer;\
+            transition: all 0.2s;\
+        \}\
+\
+        .mode-btn.active \{\
+            background: #ffeb3b;\
+            color: #8e0000;\
+        \}\
+\
+        /* NAVIGATION FOR SELLER VIEW */\
+        .seller-nav \{\
+            display: flex;\
+            background: #ffffff;\
+            border-radius: 10px;\
+            margin-bottom: 12px;\
+            border: 2px solid #e0e0e0;\
+            overflow: hidden;\
+        \}\
+\
+        .seller-nav-btn \{\
+            flex: 1;\
+            padding: 10px 4px;\
+            border: none;\
+            background: transparent;\
+            color: #666;\
+            font-size: 13px;\
+            font-weight: bold;\
+            cursor: pointer;\
+            text-align: center;\
+        \}\
+\
+        .seller-nav-btn.active \{\
+            background: #c62828;\
+            color: white;\
+        \}\
+\
+        .view-section \{\
+            display: none;\
+        \}\
+\
+        .view-section.active \{\
+            display: block;\
+        \}\
+\
+        /* STEP BOX & UI COMPONENTS */\
+        .step-box \{\
+            background: white;\
+            padding: 12px;\
+            border-radius: 12px;\
+            margin-bottom: 12px;\
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);\
+            border: 2px solid #e0e0e0;\
+        \}\
+\
+        .step-title \{\
+            font-size: 16px;\
+            font-weight: bold;\
+            color: #c62828;\
+            margin-bottom: 10px;\
+        \}\
+\
+        .grid-meat-cuts \{\
+            display: grid;\
+            grid-template-columns: repeat(2, 1fr);\
+            gap: 8px;\
+        \}\
+\
+        @media (min-width: 480px) \{\
+            .grid-meat-cuts \{\
+                grid-template-columns: repeat(4, 1fr);\
+            \}\
+        \}\
+\
+        .btn-meat \{\
+            background: #fff0f2;\
+            border: 2px solid #ef5350;\
+            border-radius: 10px;\
+            padding: 10px 6px;\
+            text-align: center;\
+            cursor: pointer;\
+            user-select: none;\
+        \}\
+\
+        .btn-meat.selected \{\
+            background: #c62828;\
+            color: white;\
+            border-color: #b71c1c;\
+        \}\
+\
+        .btn-meat.selected .price-tag \{\
+            color: #ffeb3b;\
+        \}\
+\
+        .meat-name \{\
+            font-size: 16px;\
+            font-weight: bold;\
+            display: block;\
+        \}\
+\
+        .price-tag \{\
+            font-size: 13px;\
+            color: #d32f2f;\
+            font-weight: bold;\
+            margin-top: 2px;\
+            display: block;\
+        \}\
+\
+        /* BARGAIN PRICE SECTION */\
+        .bargain-box \{\
+            margin-top: 12px;\
+            padding: 10px;\
+            background: #fff8e1;\
+            border: 2px dashed #ffa000;\
+            border-radius: 10px;\
+        \}\
+\
+        .bargain-label \{\
+            font-size: 13px;\
+            font-weight: bold;\
+            color: #b71c1c;\
+            margin-bottom: 6px;\
+            display: block;\
+        \}\
+\
+        .bargain-controls \{\
+            display: flex;\
+            gap: 8px;\
+        \}\
+\
+        .bargain-select \{\
+            flex: 1;\
+            padding: 10px;\
+            font-size: 15px;\
+            font-weight: bold;\
+            border: 2px solid #ffa000;\
+            border-radius: 8px;\
+            background: white;\
+        \}\
+\
+        .bargain-input \{\
+            width: 110px;\
+            padding: 10px;\
+            font-size: 15px;\
+            font-weight: bold;\
+            border: 2px solid #ffa000;\
+            border-radius: 8px;\
+            text-align: center;\
+        \}\
+\
+        .weight-section-label \{\
+            font-size: 13px;\
+            font-weight: bold;\
+            color: #555;\
+            margin: 8px 0 4px 0;\
+        \}\
+\
+        .grid-weights-kham \{\
+            display: grid;\
+            grid-template-columns: repeat(3, 1fr);\
+            gap: 6px;\
+            margin-bottom: 8px;\
+        \}\
+\
+        .grid-weights-kg \{\
+            display: grid;\
+            grid-template-columns: repeat(4, 1fr);\
+            gap: 6px;\
+            margin-bottom: 10px;\
+        \}\
+\
+        .btn-weight \{\
+            background: #e8f5e9;\
+            border: 2px solid #4caf50;\
+            color: #2e7d32;\
+            border-radius: 8px;\
+            padding: 10px 4px;\
+            font-size: 15px;\
+            font-weight: bold;\
+            cursor: pointer;\
+        \}\
+\
+        .btn-weight-kg \{\
+            background: #e3f2fd;\
+            border: 2px solid #2196f3;\
+            color: #1565c0;\
+        \}\
+\
+        .custom-weight-group \{\
+            display: flex;\
+            gap: 8px;\
+            align-items: center;\
+        \}\
+\
+        .custom-weight-group input \{\
+            flex: 1;\
+            padding: 10px;\
+            font-size: 16px;\
+            border: 2px solid #ccc;\
+            border-radius: 8px;\
+            text-align: center;\
+        \}\
+\
+        .custom-weight-group select \{\
+            padding: 10px;\
+            font-size: 15px;\
+            font-weight: bold;\
+            border: 2px solid #ccc;\
+            border-radius: 8px;\
+            background: white;\
+        \}\
+\
+        .btn-add \{\
+            background: #2e7d32;\
+            color: white;\
+            border: none;\
+            padding: 10px 16px;\
+            font-size: 15px;\
+            font-weight: bold;\
+            border-radius: 8px;\
+            cursor: pointer;\
+        \}\
+\
+        /* FORM CONTROLS */\
+        .form-group \{\
+            margin-bottom: 10px;\
+        \}\
+\
+        .form-group label \{\
+            font-size: 13px;\
+            font-weight: bold;\
+            color: #333;\
+            display: block;\
+            margin-bottom: 4px;\
+        \}\
+\
+        .form-group input \{\
+            width: 100%;\
+            padding: 10px;\
+            font-size: 15px;\
+            border: 2px solid #ccc;\
+            border-radius: 8px;\
+        \}\
+\
+        .ticket-box \{\
+            background: #fff;\
+            border-radius: 12px;\
+            padding: 12px;\
+            border: 2px solid #2e7d32;\
+        \}\
+\
+        .ticket-item \{\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: center;\
+            padding: 10px 0;\
+            border-bottom: 1px dashed #ccc;\
+            font-size: 15px;\
+        \}\
+\
+        .btn-delete \{\
+            background: #ff1744;\
+            color: white;\
+            border: none;\
+            border-radius: 50%;\
+            width: 30px;\
+            height: 30px;\
+            font-size: 16px;\
+            font-weight: bold;\
+            cursor: pointer;\
+        \}\
+\
+        .total-banner \{\
+            background: #1b5e20;\
+            color: white;\
+            padding: 12px;\
+            border-radius: 10px;\
+            text-align: center;\
+            margin-top: 10px;\
+        \}\
+\
+        .total-amount \{\
+            font-size: 32px;\
+            font-weight: bold;\
+            color: #ffeb3b;\
+            margin-top: 2px;\
+        \}\
+\
+        .action-buttons \{\
+            display: flex;\
+            gap: 10px;\
+            margin-top: 12px;\
+        \}\
+\
+        .btn-submit-order \{\
+            width: 100%;\
+            background: #e65100;\
+            color: white;\
+            border: none;\
+            padding: 14px;\
+            font-size: 16px;\
+            font-weight: bold;\
+            border-radius: 10px;\
+            cursor: pointer;\
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);\
+        \}\
+\
+        .btn-save-log \{\
+            flex: 2;\
+            background: #2e7d32;\
+            color: white;\
+            border: none;\
+            padding: 14px;\
+            font-size: 15px;\
+            font-weight: bold;\
+            border-radius: 10px;\
+            cursor: pointer;\
+        \}\
+\
+        .btn-clear \{\
+            flex: 1;\
+            background: #d32f2f;\
+            color: white;\
+            border: none;\
+            padding: 14px;\
+            font-size: 15px;\
+            font-weight: bold;\
+            border-radius: 10px;\
+            cursor: pointer;\
+        \}\
+\
+        /* REAL-TIME RECEIPT & LIVE FEED STYLING */\
+        .live-receipt-box \{\
+            background: #fff8e1;\
+            border: 2px solid #ffa000;\
+            border-radius: 12px;\
+            padding: 14px;\
+            margin-top: 15px;\
+        \}\
+\
+        .status-badge \{\
+            display: inline-block;\
+            padding: 6px 12px;\
+            border-radius: 20px;\
+            font-size: 13px;\
+            font-weight: bold;\
+        \}\
+\
+        .badge-pending \{ background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; \}\
+        .badge-paid \{ background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; \}\
+        .badge-delivered \{ background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; \}\
+\
+        .order-card \{\
+            background: white;\
+            border-radius: 10px;\
+            padding: 12px;\
+            margin-bottom: 12px;\
+            border: 2px solid #ffa000;\
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);\
+        \}\
+\
+        .order-header \{\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: center;\
+            border-bottom: 1px solid #eee;\
+            padding-bottom: 8px;\
+            margin-bottom: 8px;\
+        \}\
+\
+        .toggle-actions \{\
+            display: flex;\
+            gap: 8px;\
+            margin-top: 10px;\
+        \}\
+\
+        .btn-check-action \{\
+            flex: 1;\
+            padding: 10px;\
+            font-weight: bold;\
+            border-radius: 8px;\
+            border: none;\
+            cursor: pointer;\
+            font-size: 13px;\
+        \}\
+\
+        .btn-pay \{ background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; \}\
+        .btn-pay.active \{ background: #2e7d32; color: white; \}\
+\
+        .btn-deliver \{ background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; \}\
+        .btn-deliver.active \{ background: #1565c0; color: white; \}\
+\
+        /* DAILY SALES SUMMARY */\
+        .daily-summary-box \{\
+            background: #1565c0;\
+            color: white;\
+            border-radius: 12px;\
+            padding: 14px;\
+            margin-bottom: 15px;\
+        \}\
+\
+        .daily-total-val \{\
+            font-size: 28px;\
+            font-weight: bold;\
+            color: #ffeb3b;\
+        \}\
+\
+        .log-card \{\
+            background: white;\
+            border-radius: 10px;\
+            padding: 12px;\
+            margin-bottom: 10px;\
+            border: 2px solid #a5d6a7;\
+        \}\
+\
+        .log-item-row \{\
+            display: flex;\
+            justify-content: space-between;\
+            font-size: 14px;\
+            margin-bottom: 4px;\
+        \}\
+\
+        .log-total-row \{\
+            display: flex;\
+            justify-content: space-between;\
+            border-top: 1px dashed #bbb;\
+            padding-top: 6px;\
+            margin-top: 6px;\
+            font-weight: bold;\
+            font-size: 16px;\
+            color: #1b5e20;\
+        \}\
+    </style>\
+</head>\
+<body>\
+\
+    <div id="loadingScreen" class="loading-screen">\
+        <svg class="pig-logo" viewBox="0 0 64 64" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">\
+            <path d="M 18 36 C 14 36 10 32 10 26 C 10 18 18 14 30 14 C 44 14 52 20 52 28 C 52 38 44 44 32 44 C 24 44 20 42 16 38 L 10 42 L 12 34 Z" />\
+            <circle cx="22" cy="22" r="1.5" fill="#ffffff" />\
+            <ellipse cx="44" cy="28" rx="3" ry="2" />\
+            <path d="M 16 16 C 14 10 20 8 22 14" />\
+            <path d="M 28 14 C 28 8 34 8 34 14" />\
+            <path d="M 20 42 L 18 48 M 28 44 L 27 48 M 40 43 L 41 48" />\
+        </svg>\
+        <h1 class="loading-title">\uc0\u6047 \u6075 \u6020  \u6034 \u6072 \u6026 \u6070  \u6043 \u6016 \u6091 \u6047 \u6070 \u6021 \u6091 \u6023 \u6098 \u6042 \u6076 \u6016 </h1>\
+        <p class="loading-subtitle">Song Thyda Pork Market</p>\
+        <div class="progress-container">\
+            <div class="progress-bar"></div>\
+        </div>\
+    </div>\
+\
+    <div class="header">\
+        <h1>\uc0\u55358 \u56681  \u6047 \u6075 \u6020  \u6034 \u6072 \u6026 \u6070  \u6043 \u6016 \u6091 \u6047 \u6070 \u6021 \u6091 \u6023 \u6098 \u6042 \u6076 \u6016 </h1>\
+    </div>\
+\
+    <!-- MODE SWITCHER BUTTONS -->\
+    <div class="mode-bar">\
+        <button id="modeCustomerBtn" class="mode-btn active" onclick="switchMode('customer')">\uc0\u55357 \u57042  \u6016 \u6040 \u6098 \u6040 \u6089 \u6020 \u6091 \u6037 \u6098 \u6033 \u6070 \u6043 \u6091 \u6017 \u6098 \u6043 \u6077 \u6035  (Customer View)</button>\
+        <button id="modeSellerBtn" class="mode-btn" onclick="switchMode('seller')">\uc0\u55358 \u56681  \u6050 \u6098 \u6035 \u6016 \u6043 \u6016 \u6091 /\u6040 \u6089 \u6070 \u6016 \u6091  (Seller View)</button>\
+    </div>\
+\
+    <!-- CUSTOMER SELF-SERVICE VIEW -->\
+    <div id="customerView" class="view-section active">\
+        <div class="step-box" style="border-color: #ffa000;">\
+            <div class="step-title" style="color: #d84315;">\uc0\u55357 \u56420  \u6038 \u6031 \u6092 \u6040 \u6070 \u6035 \u6050 \u6098 \u6035 \u6016 \u6016 \u6075 \u6040 \u6098 \u6040 \u6089 \u6020 \u6091  (Customer Details)</div>\
+            <div class="form-group">\
+                <label>\uc0\u6024 \u6098 \u6040 \u6084 \u6087 \u6050 \u6031 \u6071 \u6032 \u6071 \u6023 \u6035  (Name):</label>\
+                <input type="text" id="custName" placeholder="\uc0\u6055 . \u6036 \u6020  \u6047 \u6098 \u6042 \u6072 \u6040 \u6075 \u6086 ">\
+            </div>\
+            <div class="form-group">\
+                <label>\uc0\u6043 \u6081 \u6017 \u6033 \u6076 \u6042 \u6047 \u6096 \u6038 \u6098 \u6033  (Phone):</label>\
+                <input type="tel" id="custPhone" placeholder="\uc0\u6055 . 012 345 678">\
+            </div>\
+            <div class="form-group">\
+                <label>\uc0\u6040 \u6089 \u6084 \u6020 \u6041 \u6016 \u6047 \u6070 \u6021 \u6091  (Pickup Date/Time):</label>\
+                <input type="text" id="custPickup" placeholder="\uc0\u6055 . \u6040 \u6089 \u6084 \u6020  7 \u6038 \u6098 \u6042 \u6073 \u6016 ">\
+            </div>\
+        </div>\
+\
+        <div class="step-box">\
+            <div class="step-title">\uc0\u6113 . \u6023 \u6098 \u6042 \u6078 \u6047 \u6042 \u6078 \u6047 \u6036 \u6098 \u6042 \u6039 \u6081 \u6033 \u6047 \u6070 \u6021 \u6091  (Step 1: Select Meat)</div>\
+            <div class="grid-meat-cuts">\
+                <div class="btn-meat" onclick="selectMeat('\uc0\u6032 \u6041 \u6049 \u6070 \u6086 \u6020 ', 23000, this, 'cust')">\
+                    <span class="meat-name">\uc0\u6032 \u6041 \u6049 \u6070 \u6086 \u6020 </span>\
+                    <span class="price-tag">23,000 \uc0\u6107 /kg</span>\
+                </div>\
+                <div class="btn-meat" onclick="selectMeat('\uc0\u6047 \u6070 \u6021 \u6091 \u6036 \u6072 \u6023 \u6070 \u6035 \u6091 ', 24000, this, 'cust')">\
+                    <span class="meat-name">\uc0\u6047 \u6070 \u6021 \u6091 \u6036 \u6072 \u6023 \u6070 \u6035 \u6091 </span>\
+                    <span class="price-tag">24,000 \uc0\u6107 /kg</span>\
+                </div>\
+                <div class="btn-meat" onclick="selectMeat('\uc0\u6022 \u6098 \u6050 \u6073 \u6020 \u6018 \u6036 \u6091 ', 22000, this, 'cust')">\
+                    <span class="meat-name">\uc0\u6022 \u6098 \u6050 \u6073 \u6020 \u6018 \u6036 \u6091 </span>\
+                    <span class="price-tag">22,000 \uc0\u6107 /kg</span>\
+                </div>\
+                <div class="btn-meat" onclick="selectMeat('\uc0\u6022 \u6098 \u6050 \u6073 \u6020 \u6023 \u6086 \u6035 \u6072 ', 24000, this, 'cust')">\
+                    <span class="meat-name">\uc0\u6022 \u6098 \u6050 \u6073 \u6020 \u6023 \u6086 \u6035 \u6072 </span>\
+                    <span class="price-tag">24,000 \uc0\u6107 /kg</span>\
+                </div>\
+                <div class="btn-meat" onclick="selectMeat('\uc0\u6047 \u6070 \u6021 \u6091 \u6047 \u6075 \u6033 \u6098 \u6034 ', 22000, this, 'cust')">\
+                    <span class="meat-name">\uc0\u6047 \u6070 \u6021 \u6091 \u6047 \u6075 \u6033 \u6098 \u6034 </span>\
+                    <span class="price-tag">22,000 \uc0\u6107 /kg</span>\
+                </div>\
+                <div class="btn-meat" onclick="selectMeat('\uc0\u6047 \u6070 \u6021 \u6091 \u6018 \u6098 \u6042 \u6016 ', 30000, this, 'cust')">\
+                    <span class="meat-name">\uc0\u6047 \u6070 \u6021 \u6091 \u6018 \u6098 \u6042 \u6016 </span>\
+                    <span class="price-tag">30,000 \uc0\u6107 /kg</span>\
+                </div>\
+                <div class="btn-meat" onclick="selectMeat('\uc0\u6023 \u6078 \u6020 \u6023 \u6098 \u6042 \u6076 \u6016 ', 22000, this, 'cust')">\
+                    <span class="meat-name">\uc0\u6023 \u6078 \u6020 \u6023 \u6098 \u6042 \u6076 \u6016 </span>\
+                    <span class="price-tag">22,000 \uc0\u6107 /kg</span>\
+                </div>\
+                <div class="btn-meat" onclick="selectMeat('\uc0\u6018 \u6098 \u6042 \u6079 \u6020 \u6016 \u6098 \u6035 \u6075 \u6020 ', 24000, this, 'cust')">\
+                    <span class="meat-name">\uc0\u6018 \u6098 \u6042 \u6079 \u6020 \u6016 \u6098 \u6035 \u6075 \u6020 </span>\
+                    <span class="price-tag">24,000 \uc0\u6107 /kg</span>\
+                </div>\
+            </div>\
+\
+            <div class="bargain-box">\
+                <span class="bargain-label">\uc0\u55356 \u57335 \u65039  \u6016 \u6082 \u6036 \u6098 \u6042 \u6082 /\u6047 \u6040 \u6098 \u6042 \u6077 \u6043 \u6031 \u6040 \u6098 \u6043 \u6083 \u6038 \u6098 \u6042 \u6040 \u6038 \u6098 \u6042 \u6080 \u6020  (Bargained Price per kg):</span>\
+                <div class="bargain-controls">\
+                    <select id="bargainSelectCust" class="bargain-select" onchange="handleBargainSelectChange('cust')">\
+                        <option value="default">\uc0\u6031 \u6040 \u6098 \u6043 \u6083 \u6026 \u6078 \u6040  (Default Price)</option>\
+                        <option value="29000">29,000 \uc0\u6107 </option>\
+                        <option value="28000">28,000 \uc0\u6107 </option>\
+                        <option value="27000">27,000 \uc0\u6107 </option>\
+                        <option value="26000">26,000 \uc0\u6107 </option>\
+                        <option value="25000">25,000 \uc0\u6107 </option>\
+                        <option value="24000">24,000 \uc0\u6107 </option>\
+                        <option value="23000">23,000 \uc0\u6107 </option>\
+                        <option value="22000">22,000 \uc0\u6107 </option>\
+                        <option value="21000">21,000 \uc0\u6107 </option>\
+                        <option value="20000">20,000 \uc0\u6107 </option>\
+                    </select>\
+                </div>\
+            </div>\
+        </div>\
+\
+        <div class="step-box">\
+            <div class="step-title">\uc0\u6114 . \u6023 \u6098 \u6042 \u6078 \u6047 \u6042 \u6078 \u6047 \u6033 \u6040 \u6098 \u6020 \u6035 \u6091  (Step 2: Choose Weight)</div>\
+            <div class="grid-weights-kham">\
+                <button class="btn-weight" onclick="addWithWeightInKg(0.1, '1 \uc0\u6017 \u6070 \u6086 ', 'cust')">1 \u6017 \u6070 \u6086 </button>\
+                <button class="btn-weight" onclick="addWithWeightInKg(0.2, '2 \uc0\u6017 \u6070 \u6086 ', 'cust')">2 \u6017 \u6070 \u6086 </button>\
+                <button class="btn-weight" onclick="addWithWeightInKg(0.3, '3 \uc0\u6017 \u6070 \u6086 ', 'cust')">3 \u6017 \u6070 \u6086 </button>\
+                <button class="btn-weight" onclick="addWithWeightInKg(0.4, '4 \uc0\u6017 \u6070 \u6086 ', 'cust')">4 \u6017 \u6070 \u6086 </button>\
+                <button class="btn-weight" onclick="addWithWeightInKg(0.5, '5 \uc0\u6017 \u6070 \u6086 ', 'cust')">5 \u6017 \u6070 \u6086 </button>\
+                <button class="btn-weight" onclick="addWithWeightInKg(0.8, '8 \uc0\u6017 \u6070 \u6086 ', 'cust')">8 \u6017 \u6070 \u6086 </button>\
+            </div>\
+            <div class="grid-weights-kg">\
+                <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(1, '1kg', 'cust')">1 kg</button>\
+                <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(2, '2kg', 'cust')">2 kg</button>\
+                <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(3, '3kg', 'cust')">3 kg</button>\
+                <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(5, '5kg', 'cust')">5 kg</button>\
+            </div>\
+            <div class="custom-weight-group">\
+                <input type="number" id="customWeightCust" step="any" placeholder="\uc0\u6055 . 1.5">\
+                <select id="weightUnitCust">\
+                    <option value="kham">\uc0\u6017 \u6070 \u6086  (Kham)</option>\
+                    <option value="kg" selected>\uc0\u6018 \u6072 \u6049 \u6076  (kg)</option>\
+                </select>\
+                <button class="btn-add" onclick="addCustomWeight('cust')">+ \uc0\u6036 \u6025 \u6098 \u6021 \u6076 \u6043 </button>\
+            </div>\
+        </div>\
+\
+        <div class="ticket-box">\
+            <div class="step-title" style="color: #2e7d32;">\uc0\u55357 \u56523  \u6036 \u6025 \u6098 \u6023 \u6072 \u6016 \u6075 \u6040 \u6098 \u6040 \u6089 \u6020 \u6091 \u6042 \u6036 \u6047 \u6091 \u6050 \u6098 \u6035 \u6016  (Your Cart)</div>\
+            <div id="itemListCust">\
+                <p style="color: #888; text-align: center; padding: 10px;">\uc0\u6040 \u6071 \u6035 \u6033 \u6070 \u6035 \u6091 \u6040 \u6070 \u6035 \u6033 \u6086 \u6035 \u6071 \u6025  (No items added)</p>\
+            </div>\
+            <div class="total-banner" style="background: #e65100;">\
+                <div>\uc0\u6031 \u6040 \u6098 \u6043 \u6083 \u6047 \u6042 \u6075 \u6036  (GRAND TOTAL)</div>\
+                <div class="total-amount" id="grandTotalCust">0 \uc0\u6107 </div>\
+            </div>\
+        </div>\
+\
+        <div style="margin-top: 12px;">\
+            <button class="btn-submit-order" onclick="submitCustomerOrder()">\uc0\u55357 \u56960  \u6036 \u6025 \u6098 \u6023 \u6076 \u6035 \u6016 \u6070 \u6042 \u6016 \u6075 \u6040 \u6098 \u6040 \u6089 \u6020 \u6091 \u6033 \u6085 \u6016 \u6070 \u6035 \u6091 \u6050 \u6098 \u6035 \u6016 \u6043 \u6016 \u6091  (Send Order)</button>\
+        </div>\
+\
+        <!-- REAL-TIME CUSTOMER RECEIPT VIEW -->\
+        <div id="customerReceiptContainer" style="display: none;" class="live-receipt-box">\
+            <h3 style="color: #e65100; text-align: center; margin-bottom: 8px;">\uc0\u55358 \u56830  \u6036 \u6020 \u6098 \u6016 \u6070 \u6035 \u6091 \u6026 \u6083 \u6031 \u6070 \u6040 \u6026 \u6070 \u6035  (Live Order Receipt)</h3>\
+            <p style="font-size: 13px; text-align: center; color: #555; margin-bottom: 12px;">\uc0\u6038 \u6096 \u6031 \u6092 \u6040 \u6070 \u6035 \u6050 \u6070 \u6036 \u6091 \u6026 \u6081 \u6031 \u6037 \u6098 \u6033 \u6070 \u6043 \u6091 \u6038 \u6072 \u6050 \u6098 \u6035 \u6016 \u6043 \u6016 \u6091  (Real-time update from seller)</p>\
+            <div id="receiptContent"></div>\
+        </div>\
+    </div>\
+\
+    <!-- SELLER DASHBOARD (MOM'S VIEW) -->\
+    <div id="sellerView" class="view-section">\
+        <div class="seller-nav">\
+            <button id="navLiveOrdersBtn" class="seller-nav-btn active" onclick="switchSellerTab('liveOrdersTab')">\uc0\u55357 \u56545  \u6016 \u6070 \u6042 \u6016 \u6075 \u6040 \u6098 \u6040 \u6089 \u6020 \u6091 \u6037 \u6098 \u6033 \u6070 \u6043 \u6091  (Live Feed)</button>\
+            <button id="navCalcBtn" class="seller-nav-btn" onclick="switchSellerTab('calculatorTab')">\uc0\u55358 \u56814  \u6018 \u6030 \u6035 \u6070 \u6033 \u6076 \u6033 \u6085  (POS)</button>\
+            <button id="navLogsBtn" class="seller-nav-btn" onclick="switchSellerTab('logsTab')">\uc0\u55357 \u56540  \u6036 \u6098 \u6042 \u6044 \u6031 \u6098 \u6031 \u6071 \u6043 \u6016 \u6091  (History)</button>\
+        </div>\
+\
+        <!-- TAB 1: LIVE ORDERS FEED FROM FIREBASE -->\
+        <div id="liveOrdersTab" class="seller-tab-content">\
+            <div class="step-box" style="border-color: #ffa000;">\
+                <div class="step-title" style="color: #d84315;">\uc0\u55357 \u56596  \u6016 \u6070 \u6042 \u6016 \u6075 \u6040 \u6098 \u6040 \u6089 \u6020 \u6091 \u6038 \u6072 \u6050 \u6031 \u6071 \u6032 \u6071 \u6023 \u6035  (Incoming Live Orders)</div>\
+                <div id="firebaseOrdersFeed">\
+                    <p style="color: #888; text-align: center; padding: 15px;">\uc0\u6016 \u6086 \u6038 \u6075 \u6020 \u6039 \u6098 \u6023 \u6070 \u6036 \u6091 \u6033 \u6071 \u6035 \u6098 \u6035 \u6035 \u6096 \u6041 ... (Connecting to live feed...)</p>\
+                </div>\
+            </div>\
+        </div>\
+\
+        <!-- TAB 2: WALK-IN POS CALCULATOR -->\
+        <div id="calculatorTab" class="seller-tab-content" style="display: none;">\
+            <div class="step-box">\
+                <div class="step-title">\uc0\u6113 . \u6023 \u6098 \u6042 \u6078 \u6047 \u6042 \u6078 \u6047 \u6036 \u6098 \u6042 \u6039 \u6081 \u6033 \u6047 \u6070 \u6021 \u6091  (Step 1: Choose Meat)</div>\
+                <div class="grid-meat-cuts">\
+                    <div class="btn-meat" onclick="selectMeat('\uc0\u6032 \u6041 \u6049 \u6070 \u6086 \u6020 ', 23000, this, 'calc')">\
+                        <span class="meat-name">\uc0\u6032 \u6041 \u6049 \u6070 \u6086 \u6020 </span>\
+                        <span class="price-tag">23,000 \uc0\u6107 /kg</span>\
+                    </div>\
+                    <div class="btn-meat" onclick="selectMeat('\uc0\u6047 \u6070 \u6021 \u6091 \u6036 \u6072 \u6023 \u6070 \u6035 \u6091 ', 24000, this, 'calc')">\
+                        <span class="meat-name">\uc0\u6047 \u6070 \u6021 \u6091 \u6036 \u6072 \u6023 \u6070 \u6035 \u6091 </span>\
+                        <span class="price-tag">24,000 \uc0\u6107 /kg</span>\
+                    </div>\
+                    <div class="btn-meat" onclick="selectMeat('\uc0\u6022 \u6098 \u6050 \u6073 \u6020 \u6018 \u6036 \u6091 ', 22000, this, 'calc')">\
+                        <span class="meat-name">\uc0\u6022 \u6098 \u6050 \u6073 \u6020 \u6018 \u6036 \u6091 </span>\
+                        <span class="price-tag">22,000 \uc0\u6107 /kg</span>\
+                    </div>\
+                    <div class="btn-meat" onclick="selectMeat('\uc0\u6022 \u6098 \u6050 \u6073 \u6020 \u6023 \u6086 \u6035 \u6072 ', 24000, this, 'calc')">\
+                        <span class="meat-name">\uc0\u6022 \u6098 \u6050 \u6073 \u6020 \u6023 \u6086 \u6035 \u6072 </span>\
+                        <span class="price-tag">24,000 \uc0\u6107 /kg</span>\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <div class="step-box">\
+                <div class="step-title">\uc0\u6114 . \u6023 \u6098 \u6042 \u6078 \u6047 \u6042 \u6078 \u6047 \u6033 \u6040 \u6098 \u6020 \u6035 \u6091  (Step 2: Choose Weight)</div>\
+                <div class="grid-weights-kg">\
+                    <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(1, '1kg', 'calc')">1 kg</button>\
+                    <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(2, '2kg', 'calc')">2 kg</button>\
+                    <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(3, '3kg', 'calc')">3 kg</button>\
+                    <button class="btn-weight btn-weight-kg" onclick="addWithWeightInKg(5, '5kg', 'calc')">5 kg</button>\
+                </div>\
+            </div>\
+\
+            <div class="ticket-box">\
+                <div class="step-title" style="color: #2e7d32;">\uc0\u55357 \u56523  \u6036 \u6025 \u6098 \u6023 \u6072 \u6033 \u6071 \u6025 \u6047 \u6042 \u6075 \u6036  (Walk-in Ticket)</div>\
+                <div id="itemListCalc">\
+                    <p style="color: #888; text-align: center; padding: 10px;">\uc0\u6040 \u6071 \u6035 \u6033 \u6070 \u6035 \u6091 \u6040 \u6070 \u6035 \u6033 \u6086 \u6035 \u6071 \u6025  (No items added)</p>\
+                </div>\
+                <div class="total-banner">\
+                    <div>\uc0\u6031 \u6040 \u6098 \u6043 \u6083 \u6047 \u6042 \u6075 \u6036  (GRAND TOTAL)</div>\
+                    <div class="total-amount" id="grandTotalCalc">0 \uc0\u6107 </div>\
+                </div>\
+            </div>\
+\
+            <div class="action-buttons">\
+                <button class="btn-save-log" onclick="saveWalkInSale()">\uc0\u55357 \u56510  \u6042 \u6016 \u6098 \u6047 \u6070 \u6033 \u6075 \u6016 \u6016 \u6070 \u6042 \u6043 \u6016 \u6091  (Save Sale)</button>\
+                <button class="btn-clear" onclick="resetOrder('calc')">\uc0\u55357 \u56580  \u6018 \u6030 \u6035 \u6070 \u6032 \u6098 \u6040 \u6072 </button>\
+            </div>\
+        </div>\
+\
+        <!-- TAB 3: SALES HISTORY LOGS -->\
+        <div id="logsTab" class="seller-tab-content" style="display: none;">\
+            <div class="daily-summary-box">\
+                <div>\uc0\u55357 \u56517  \u6036 \u6098 \u6042 \u6070 \u6016 \u6091 \u6043 \u6016 \u6091 \u6047 \u6042 \u6075 \u6036 \u6032 \u6098 \u6020 \u6083 \u6035 \u6081 \u6087  (TODAY REVENUE)</div>\
+                <div class="daily-total-val" id="dailyTotalDisplay">0 \uc0\u6107 </div>\
+            </div>\
+            <div class="step-box">\
+                <div class="step-title">\uc0\u55357 \u56540  \u6036 \u6098 \u6042 \u6044 \u6031 \u6098 \u6031 \u6071 \u6043 \u6016 \u6091 \u6026 \u6082 \u6043 \u6036 \u6070 \u6035 \u6042 \u6016 \u6098 \u6047 \u6070 \u6033 \u6075 \u6016  (Sales Logs)</div>\
+                <div id="logsContainer">\
+                    <p style="color: #888; text-align: center; padding: 15px;">\uc0\u6040 \u6071 \u6035 \u6033 \u6070 \u6035 \u6091 \u6040 \u6070 \u6035 \u6036 \u6098 \u6042 \u6044 \u6031 \u6098 \u6031 \u6071 \u6043 \u6016 \u6091  (No saved logs)</p>\
+                </div>\
+            </div>\
+        </div>\
+    </div>\
+\
+    <!-- FIREBASE MODULE & REAL-TIME SYNC LOGIC -->\
+    <script type="module">\
+        import \{ initializeApp \} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";\
+        import \{ getDatabase, ref, push, set, onValue, update, remove \} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";\
+\
+        // FIREBASE CONFIGURATION[cite: 1]\
+        const firebaseConfig = \{\
+            apiKey: "AIzaSyDc4oCclc0Ul_9jn-2XYRIwaL5Q6yBj5Cs",\
+            authDomain: "pork-shop-orders.firebaseapp.com",\
+            databaseURL: "https://pork-shop-orders-default-rtdb.asia-southeast1.firebasedatabase.app",\
+            projectId: "pork-shop-orders",\
+            storageBucket: "pork-shop-orders.firebasestorage.app",\
+            messagingSenderId: "647120124610",\
+            appId: "1:647120124610:web:3357f4ab085117da4bd95b"\
+        \};\
+\
+        const app = initializeApp(firebaseConfig);\
+        const db = getDatabase(app);\
+\
+        // AUDIO SFX\
+        const audioTap = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');\
+        const audioSuccess = new Audio('https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3');\
+        const audioDelete = new Audio('https://assets.mixkit.co/active_storage/sfx/2572/2572-preview.mp3');\
+\
+        function playSFX(audioObj) \{\
+            if (audioObj) \{\
+                audioObj.currentTime = 0;\
+                audioObj.play().catch(e => console.log("Audio play deferred:", e));\
+            \}\
+        \}\
+\
+        window.state = \{\
+            cust: \{ selectedMeatName: "", baseMeatPrice: 0, activeMeatPrice: 0, orderList: [] \},\
+            calc: \{ selectedMeatName: "", baseMeatPrice: 0, activeMeatPrice: 0, orderList: [] \}\
+        \};\
+\
+        window.addEventListener('DOMContentLoaded', () => \{\
+            setTimeout(() => \{\
+                document.getElementById('loadingScreen').classList.add('hidden');\
+            \}, 2000);\
+\
+            listenToLiveOrders();\
+            checkExistingCustomerOrder();\
+            renderLogs();\
+        \});\
+\
+        // VIEW & MODE SWITCHING\
+        window.switchMode = function(mode) \{\
+            playSFX(audioTap);\
+            document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));\
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));\
+\
+            if (mode === 'customer') \{\
+                document.getElementById('customerView').classList.add('active');\
+                document.getElementById('modeCustomerBtn').classList.add('active');\
+            \} else \{\
+                document.getElementById('sellerView').classList.add('active');\
+                document.getElementById('modeSellerBtn').classList.add('active');\
+            \}\
+\
+            window.scrollTo(\{ top: 0, behavior: 'smooth' \});\
+        \};\
+\
+        window.switchSellerTab = function(tabId) \{\
+            playSFX(audioTap);\
+            document.querySelectorAll('.seller-tab-content').forEach(t => t.style.display = 'none');\
+            document.querySelectorAll('.seller-nav-btn').forEach(b => b.classList.remove('active'));\
+\
+            document.getElementById(tabId).style.display = 'block';\
+\
+            if (tabId === 'liveOrdersTab') document.getElementById('navLiveOrdersBtn').classList.add('active');\
+            if (tabId === 'calculatorTab') document.getElementById('navCalcBtn').classList.add('active');\
+            if (tabId === 'logsTab') \{\
+                document.getElementById('navLogsBtn').classList.add('active');\
+                renderLogs();\
+            \}\
+        \};\
+\
+        // MEAT & WEIGHT SELECTION\
+        window.selectMeat = function(name, defaultPrice, element, mode = 'cust') \{\
+            playSFX(audioTap);\
+            state[mode].selectedMeatName = name;\
+            state[mode].baseMeatPrice = defaultPrice;\
+            state[mode].activeMeatPrice = defaultPrice;\
+\
+            const container = element.parentElement;\
+            container.querySelectorAll('.btn-meat').forEach(btn => btn.classList.remove('selected'));\
+            element.classList.add('selected');\
+        \};\
+\
+        window.handleBargainSelectChange = function(mode = 'cust') \{\
+            const select = document.getElementById('bargainSelect' + (mode === 'cust' ? 'Cust' : 'Calc'));\
+            const val = select.value;\
+            if (val === 'default') \{\
+                state[mode].activeMeatPrice = state[mode].baseMeatPrice;\
+            \} else \{\
+                state[mode].activeMeatPrice = parseFloat(val);\
+            \}\
+        \};\
+\
+        window.addWithWeightInKg = function(weightInKg, labelDisplay, mode = 'cust') \{\
+            if (!state[mode].selectedMeatName) return;\
+            const itemTotal = Math.round(state[mode].activeMeatPrice * weightInKg);\
+            state[mode].orderList.push(\{\
+                name: state[mode].selectedMeatName,\
+                pricePerKg: state[mode].activeMeatPrice,\
+                weightInKg,\
+                labelDisplay,\
+                itemTotal\
+            \});\
+            updateUI(mode);\
+            playSFX(audioTap);\
+        \};\
+\
+        window.addCustomWeight = function(mode = 'cust') \{\
+            const suffix = mode === 'cust' ? 'Cust' : 'Calc';\
+            const input = document.getElementById('customWeight' + suffix);\
+            const unit = document.getElementById('weightUnit' + suffix).value;\
+            let rawValue = parseFloat(input.value);\
+\
+            if (!state[mode].selectedMeatName || isNaN(rawValue) || rawValue <= 0) return;\
+\
+            let weightInKg = unit === 'kham' ? rawValue * 0.1 : rawValue;\
+            let labelDisplay = unit === 'kham' ? rawValue + " \uc0\u6017 \u6070 \u6086 " : rawValue + "kg";\
+\
+            window.addWithWeightInKg(weightInKg, labelDisplay, mode);\
+            input.value = "";\
+        \};\
+\
+        window.removeItem = function(index, mode = 'cust') \{\
+            playSFX(audioDelete);\
+            state[mode].orderList.splice(index, 1);\
+            updateUI(mode);\
+        \};\
+\
+        window.resetOrder = function(mode = 'cust') \{\
+            state[mode].orderList = [];\
+            state[mode].selectedMeatName = "";\
+            updateUI(mode);\
+        \};\
+\
+        function updateUI(mode = 'cust') \{\
+            const suffix = mode === 'cust' ? 'Cust' : 'Calc';\
+            const listContainer = document.getElementById('itemList' + suffix);\
+            const totalDisplay = document.getElementById('grandTotal' + suffix);\
+\
+            if (state[mode].orderList.length === 0) \{\
+                listContainer.innerHTML = '<p style="color: #888; text-align: center; padding: 10px;">\uc0\u6040 \u6071 \u6035 \u6033 \u6070 \u6035 \u6091 \u6040 \u6070 \u6035 \u6033 \u6086 \u6035 \u6071 \u6025  (No items added)</p>';\
+                totalDisplay.innerText = "0 \uc0\u6107 ";\
+                return;\
+            \}\
+\
+            let html = "";\
+            let grandTotal = 0;\
+\
+            state[mode].orderList.forEach((item, index) => \{\
+                grandTotal += item.itemTotal;\
+                html += `\
+                    <div class="ticket-item">\
+                        <div>\
+                            <strong>$\{item.name\}</strong><br>\
+                            <small>$\{item.labelDisplay\} ($\{item.weightInKg\} kg) x $\{item.pricePerKg.toLocaleString()\} \uc0\u6107 </small>\
+                        </div>\
+                        <div style="display: flex; align-items: center; gap: 10px;">\
+                            <strong>$\{item.itemTotal.toLocaleString()\} \uc0\u6107 </strong>\
+                            <button class="btn-delete" onclick="removeItem($\{index\}, '$\{mode\}')">\uc0\u10005 </button>\
+                        </div>\
+                    </div>\
+                `;\
+            \});\
+\
+            listContainer.innerHTML = html;\
+            totalDisplay.innerText = grandTotal.toLocaleString() + " \uc0\u6107 ";\
+        \}\
+\
+        // FIREBASE SUBMISSION & LIVE RECEIPT (CUSTOMER)\
+        window.submitCustomerOrder = function() \{\
+            const name = document.getElementById('custName').value.trim();\
+            const phone = document.getElementById('custPhone').value.trim();\
+            const pickup = document.getElementById('custPickup').value.trim();\
+\
+            if (!name || state.cust.orderList.length === 0) \{\
+                alert("\uc0\u6047 \u6076 \u6040 \u6036 \u6025 \u6098 \u6021 \u6076 \u6043 \u6024 \u6098 \u6040 \u6084 \u6087  \u6035 \u6071 \u6020 \u6023 \u6098 \u6042 \u6078 \u6047 \u6042 \u6078 \u6047 \u6040 \u6075 \u6017 \u6033 \u6086 \u6035 \u6071 \u6025 ! (Please enter customer name and select items)");\
+                return;\
+            \}\
+\
+            playSFX(audioSuccess);\
+            const grandTotal = state.cust.orderList.reduce((sum, item) => sum + item.itemTotal, 0);\
+\
+            const orderRef = push(ref(db, 'orders'));\
+            const orderData = \{\
+                id: orderRef.key,\
+                customerName: name,\
+                customerPhone: phone || 'N/A',\
+                pickupTime: pickup || ' ASAP',\
+                items: state.cust.orderList,\
+                grandTotal: grandTotal,\
+                isPaid: false,\
+                isDelivered: false,\
+                timestamp: new Date().toLocaleTimeString('km-KH')\
+            \};\
+\
+            set(orderRef, orderData).then(() => \{\
+                localStorage.setItem('my_active_order_id', orderRef.key);\
+                listenToMyCustomerOrder(orderRef.key);\
+                window.resetOrder('cust');\
+            \});\
+        \};\
+\
+        function checkExistingCustomerOrder() \{\
+            const activeId = localStorage.getItem('my_active_order_id');\
+            if (activeId) \{\
+                listenToMyCustomerOrder(activeId);\
+            \}\
+        \}\
+\
+        function listenToMyCustomerOrder(orderId) \{\
+            const container = document.getElementById('customerReceiptContainer');\
+            const content = document.getElementById('receiptContent');\
+            container.style.display = 'block';\
+\
+            onValue(ref(db, 'orders/' + orderId), (snapshot) => \{\
+                const order = snapshot.val();\
+                if (!order) \{\
+                    container.style.display = 'none';\
+                    return;\
+                \}\
+\
+                let itemsHtml = order.items.map(i => `<div class="log-item-row"><span>$\{i.name\} ($\{i.labelDisplay\})</span><span>$\{i.itemTotal.toLocaleString()\} \uc0\u6107 </span></div>`).join('');\
+\
+                content.innerHTML = `\
+                    <p>\uc0\u55357 \u56420  <strong>$\{order.customerName\}</strong> ($\{order.customerPhone\})</p>\
+                    <p>\uc0\u9200  <strong>\u6040 \u6089 \u6084 \u6020 \u6041 \u6016 :</strong> $\{order.pickupTime\}</p>\
+                    <div style="margin: 10px 0;">$\{itemsHtml\}</div>\
+                    <p class="log-total-row"><span>\uc0\u6047 \u6042 \u6075 \u6036 :</span><span>$\{order.grandTotal.toLocaleString()\} \u6107 </span></p>\
+                    <div style="margin-top: 10px; display: flex; gap: 8px;">\
+                        <span class="status-badge $\{order.isPaid ? 'badge-paid' : 'badge-pending'\}">\
+                            $\{order.isPaid ? '\uc0\u9989  \u6036 \u6070 \u6035 \u6033 \u6076 \u6033 \u6070 \u6031 \u6091 \u6036 \u6098 \u6042 \u6070 \u6016 \u6091  (Paid)' : '\u10060  \u6040 \u6071 \u6035 \u6033 \u6070 \u6035 \u6091 \u6036 \u6020 \u6091 \u6036 \u6098 \u6042 \u6070 \u6016 \u6091  (Unpaid)'\}\
+                        </span>\
+                        <span class="status-badge $\{order.isDelivered ? 'badge-delivered' : 'badge-pending'\}">\
+                            $\{order.isDelivered ? '\uc0\u55357 \u57077  \u6036 \u6070 \u6035 \u6036 \u6098 \u6042 \u6018 \u6043 \u6091 \u6033 \u6086 \u6035 \u6071 \u6025  (Delivered)' : '\u9203  \u6016 \u6086 \u6038 \u6075 \u6020 \u6042 \u6080 \u6036 \u6021 \u6086  (Preparing)'\}\
+                        </span>\
+                    </div>\
+                `;\
+            \});\
+        \}\
+\
+        // FIREBASE LIVE ORDERS FEED (SELLER)\
+        function listenToLiveOrders() \{\
+            const feed = document.getElementById('firebaseOrdersFeed');\
+\
+            onValue(ref(db, 'orders'), (snapshot) => \{\
+                const data = snapshot.val();\
+                if (!data) \{\
+                    feed.innerHTML = '<p style="color: #888; text-align: center; padding: 15px;">\uc0\u6040 \u6071 \u6035 \u6033 \u6070 \u6035 \u6091 \u6040 \u6070 \u6035 \u6016 \u6070 \u6042 \u6016 \u6075 \u6040 \u6098 \u6040 \u6089 \u6020 \u6091 \u6035 \u6085 \u6049 \u6078 \u6041 \u6033 \u6081  (No active orders)</p>';\
+                    return;\
+                \}\
+\
+                let html = "";\
+                Object.keys(data).forEach((key) => \{\
+                    const o = data[key];\
+                    let itemsHtml = o.items.map(i => `<div class="log-item-row"><span>$\{i.name\} ($\{i.labelDisplay\})</span><span>$\{i.itemTotal.toLocaleString()\} \uc0\u6107 </span></div>`).join('');\
+\
+                    html += `\
+                        <div class="order-card">\
+                            <div class="order-header">\
+                                <strong>\uc0\u55357 \u56420  $\{o.customerName\} ($\{o.customerPhone\})</strong>\
+                                <small>\uc0\u55357 \u56658  $\{o.timestamp\}</small>\
+                            </div>\
+                            <p style="font-size: 13px; color: #666; margin-bottom: 6px;">\uc0\u9200  <strong>\u6040 \u6089 \u6084 \u6020 \u6041 \u6016 :</strong> $\{o.pickupTime\}</p>\
+                            $\{itemsHtml\}\
+                            <div class="log-total-row">\
+                                <span>\uc0\u6047 \u6042 \u6075 \u6036 </span>\
+                                <span>$\{o.grandTotal.toLocaleString()\} \uc0\u6107 </span>\
+                            </div>\
+                            <div class="toggle-actions">\
+                                <button class="btn-check-action btn-pay $\{o.isPaid ? 'active' : ''\}" onclick="toggleOrderStatus('$\{key\}', 'isPaid', $\{!o.isPaid\})">\
+                                    $\{o.isPaid ? '\uc0\u10003  \u6036 \u6070 \u6035 \u6036 \u6020 \u6091 \u6036 \u6098 \u6042 \u6070 \u6016 \u6091 ' : '\u6036 \u6020 \u6091 \u6036 \u6098 \u6042 \u6070 \u6016 \u6091 '\}\
+                                </button>\
+                                <button class="btn-check-action btn-deliver $\{o.isDelivered ? 'active' : ''\}" onclick="toggleOrderStatus('$\{key\}', 'isDelivered', $\{!o.isDelivered\})">\
+                                    $\{o.isDelivered ? '\uc0\u10003  \u6036 \u6070 \u6035 \u6026 \u6073 \u6016 \u6023 \u6076 \u6035 ' : '\u6026 \u6073 \u6016 \u6023 \u6076 \u6035 '\}\
+                                </button>\
+                                <button class="btn-check-action" style="background: #2e7d32; color: white;" onclick="completeAndArchiveOrder('$\{key\}')">\
+                                    \uc0\u9989  \u6036 \u6025 \u6098 \u6021 \u6036 \u6091 \
+                                </button>\
+                            </div>\
+                        </div>\
+                    `;\
+                \});\
+\
+                feed.innerHTML = html;\
+            \});\
+        \}\
+\
+        window.toggleOrderStatus = function(orderId, field, newValue) \{\
+            playSFX(audioTap);\
+            update(ref(db, 'orders/' + orderId), \{ [field]: newValue \});\
+        \};\
+\
+        window.completeAndArchiveOrder = function(orderId) \{\
+            playSFX(audioSuccess);\
+            onValue(ref(db, 'orders/' + orderId), (snapshot) => \{\
+                const o = snapshot.val();\
+                if (o) \{\
+                    let logs = JSON.parse(localStorage.getItem('pork_sales_logs') || '[]');\
+                    logs.unshift(\{\
+                        id: Date.now(),\
+                        timestamp: o.timestamp + ` ($\{o.customerName\})`,\
+                        grandTotal: o.grandTotal,\
+                        items: o.items\
+                    \});\
+                    localStorage.setItem('pork_sales_logs', JSON.stringify(logs));\
+                    remove(ref(db, 'orders/' + orderId));\
+                    renderLogs();\
+                \}\
+            \}, \{ onlyOnce: true \});\
+        \};\
+\
+        window.saveWalkInSale = function() \{\
+            if (state.calc.orderList.length === 0) return;\
+            playSFX(audioSuccess);\
+            const grandTotal = state.calc.orderList.reduce((sum, item) => sum + item.itemTotal, 0);\
+\
+            let logs = JSON.parse(localStorage.getItem('pork_sales_logs') || '[]');\
+            logs.unshift(\{\
+                id: Date.now(),\
+                timestamp: new Date().toLocaleTimeString('km-KH') + " (Walk-in)",\
+                grandTotal: grandTotal,\
+                items: state.calc.orderList\
+            \});\
+            localStorage.setItem('pork_sales_logs', JSON.stringify(logs));\
+\
+            window.resetOrder('calc');\
+            window.switchSellerTab('logsTab');\
+        \};\
+\
+        function renderLogs() \{\
+            const container = document.getElementById('logsContainer');\
+            let logs = JSON.parse(localStorage.getItem('pork_sales_logs') || '[]');\
+\
+            let dailyTotal = 0;\
+            if (logs.length === 0) \{\
+                container.innerHTML = '<p style="color: #888; text-align: center; padding: 15px;">\uc0\u6040 \u6071 \u6035 \u6033 \u6070 \u6035 \u6091 \u6040 \u6070 \u6035 \u6036 \u6098 \u6042 \u6044 \u6031 \u6098 \u6031 \u6071 \u6043 \u6016 \u6091  (No saved logs)</p>';\
+                document.getElementById('dailyTotalDisplay').innerText = "0 \uc0\u6107 ";\
+                return;\
+            \}\
+\
+            let html = "";\
+            logs.forEach(log => \{\
+                dailyTotal += log.grandTotal;\
+                let itemsHtml = log.items.map(i => `<div class="log-item-row"><span>$\{i.name\} ($\{i.labelDisplay\})</span><span>$\{i.itemTotal.toLocaleString()\} \uc0\u6107 </span></div>`).join('');\
+\
+                html += `\
+                    <div class="log-card">\
+                        <div style="font-size: 13px; color: #555; margin-bottom: 4px;">\uc0\u55357 \u56658  $\{log.timestamp\}</div>\
+                        $\{itemsHtml\}\
+                        <div class="log-total-row">\
+                            <span>\uc0\u6047 \u6042 \u6075 \u6036 </span>\
+                            <span>$\{log.grandTotal.toLocaleString()\} \uc0\u6107 </span>\
+                        </div>\
+                    </div>\
+                `;\
+            \});\
+\
+            container.innerHTML = html;\
+            document.getElementById('dailyTotalDisplay').innerText = dailyTotal.toLocaleString() + " \uc0\u6107 ";\
+        \}\
+    </script>\
+</body>\
+</html>}
